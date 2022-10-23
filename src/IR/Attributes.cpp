@@ -136,7 +136,7 @@ Napi::Value Attribute::get(const Napi::CallbackInfo &info) {
         if (info[1].IsNumber()) {
             unsigned rawAttrKind = info[1].As<Napi::Number>();
             if (rawAttrKind < llvm::Attribute::AttrKind::FirstEnumAttr ||
-                rawAttrKind > llvm::Attribute::AttrKind::LastEnumAttr) {
+                rawAttrKind > llvm::Attribute::AttrKind::LastIntAttr) {
                 throw Napi::TypeError::New(env, ErrMsg::Class::Attribute::invalidAttrKind);
             }
             auto attrKind = static_cast<llvm::Attribute::AttrKind>(rawAttrKind);
